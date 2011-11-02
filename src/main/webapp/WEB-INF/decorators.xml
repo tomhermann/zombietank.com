@@ -1,0 +1,14 @@
+<decorators defaultdir="/WEB-INF/decorators">
+    <!-- 
+    <excludes>
+        <pattern>/new_docs/*</pattern>
+        <pattern>/documentation/core/selenium/*</pattern>
+        <pattern>/documentation/core/demo/*</pattern>
+        <pattern>/documentation/core/ajaxdemo/*</pattern>
+    </excludes>
+     -->
+    <decorator name="main" page="main.jsp">
+       <pattern>/*</pattern>
+    </decorator>
+    <decorator name="printable" page="printable.jsp" />
+</decorators>
