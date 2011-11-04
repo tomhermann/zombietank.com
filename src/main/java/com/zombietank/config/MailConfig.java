@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 
 import com.zombietank.config.annotation.Dev;
@@ -45,10 +44,10 @@ public class MailConfig {
 		@Bean
 		public EmailService emailService() {
 			return new AbstractEmailService() {
-				@Async
 				public void send(Email email) {
 					System.out.println("e-mail: " + email);
 				}
+				
 				public void send(Email email, String templateLocation, Map<String, ? extends Serializable> model) {
 					System.out.println("templateLocation: " + templateLocation);
 					System.out.println("model: " + model);

@@ -1,5 +1,6 @@
 apply plugin: 'war'
 apply plugin: 'jetty'
+apply plugin: 'eclipse'
 apply from:'https://raw.github.com/tomhermann/gradle-scripts/master/sources-javadoc.gradle'
 apply from:'https://raw.github.com/breskeby/gradleplugins/0.9-upgrade/aspectjPlugin/aspectJ.gradle'
 
@@ -63,5 +64,9 @@ dependencies {
 war {
 	manifest {
 		attributes "Implementation-Title": rootProject.name, "Implementation-Version": version
+	}
+	
+	metaInf {
+		from 'src/main/META-INF'
 	}
 }
