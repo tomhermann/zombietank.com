@@ -5,40 +5,40 @@ apply from:'https://raw.github.com/tomhermann/gradle-scripts/master/sources-java
 apply from:'https://raw.github.com/breskeby/gradleplugins/0.9-upgrade/aspectjPlugin/aspectJ.gradle'
 
 repositories { 
-	mavenRepo urls: 'http://repo.jfrog.org/artifactory/repo' 
+	mavenRepo urls: 'http://repo.jfrog.org/artifactory/repo'
 }
 
-version = '0.0.4.SNAPSHOT'
+configurations {
+	all*.exclude group: "commons-logging", module: "commons-logging"
+}
+
+version = '0.0.5.SNAPSHOT'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
-def springVersion = '3.1.0.M2'
+def springVersion = '3.1.0.RELEASE'
 def slf4jVersion = '1.6.2'
 
 dependencies {
 	ajc "org.aspectj:aspectjtools:1.6.11"
 
 	compile (
-		"org.springframework:spring-aspects:${springVersion}",
+		'javax.inject:javax.inject:1',
 		"org.springframework:spring-context:${springVersion}",
 		"org.springframework:spring-webmvc:${springVersion}",
 		"org.springframework:spring-jdbc:${springVersion}",
+		"org.springframework:spring-aspects:${springVersion}",
+		'org.aspectj:aspectjrt:1.6.11',
+		'cglib:cglib:2.2.2',
 		"org.slf4j:slf4j-api:${slf4jVersion}",
 		"org.slf4j:jcl-over-slf4j:${slf4jVersion}",
 		"org.slf4j:slf4j-log4j12:${slf4jVersion}",
-		'com.h2database:h2:1.3.158',
-		'cglib:cglib:2.2.2',
-		'org.aspectj:aspectjrt:1.6.11',
 		'javax.validation:validation-api:1.0.0.GA',
 		'org.hibernate:hibernate-validator:4.2.0.Final',
-		'joda-time:joda-time:2.0',
-		'joda-time:joda-time-jsptags:1.1',
 		'org.codehaus.jackson:jackson-mapper-asl:1.8.3',
 		'commons-fileupload:commons-fileupload:1.2.2',
-		'commons-io:commons-io:2.0.1',
 		'javax.mail:mail:1.4.1',
 		'org.apache.velocity:velocity:1.7',
-		'javax.inject:javax.inject:1',
 		'javax.servlet:jstl:1.2',
 		'opensymphony:sitemesh:2.4.2'
 	)
@@ -51,11 +51,12 @@ dependencies {
 	)
 
 	runtime (
+		'com.h2database:h2:1.3.158',
 		'log4j:log4j:1.2.16'
 	)
 
 	testCompile (
-		'junit:junit:4.9',
+		'junit:junit:4.10',
 		'org.hamcrest:hamcrest-all:1.1',
 		'org.mockito:mockito-all:1.8.5'
 	)
@@ -63,10 +64,13 @@ dependencies {
 
 war {
 	manifest {
-		attributes "Implementation-Title": rootProject.name, "Implementation-Version": version
+		attributes(
+			"Implementation-Title": rootProject.name, 
+			"Implementation-Version": version
+		)
 	}
 	
 	metaInf {
-		from 'src/main/META-INF'
+		from 'src/main/resources/META-INF'
 	}
 }
