@@ -1,4 +1,6 @@
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +15,7 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -21,10 +23,10 @@
     </style>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="resources/images/favicon.ico">
-    <link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="resources/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="resources/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />">
+    <link rel="apple-touch-icon" href="<c:url value="/resources/images/apple-touch-icon.png" />">
+    <link rel="apple-touch-icon" sizes="72x72" href="<c:url value="/resources/images/apple-touch-icon-72x72.png" />">
+    <link rel="apple-touch-icon" sizes="114x114" href="<c:url value="/resources/images/apple-touch-icon-114x114.png" />">
 	<decorator:head />
   </head>
 
@@ -33,11 +35,11 @@
     <div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">zombietank</a>
           <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="<c:url value="/" />">Home</a></li>
+            <li><a href="<c:url value="/about" />">About</a></li>
+            <li><a href="<c:url value="/contact" />">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -47,7 +49,7 @@
 	  <decorator:body />
 
       <footer>
-        <p>&copy; Company 2011</p>
+        <p>&copy; zombietank.com 2011</p>
       </footer>
 
     </div> <!-- /container -->
