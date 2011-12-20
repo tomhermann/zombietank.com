@@ -12,12 +12,11 @@ configurations {
 	all*.exclude group: "commons-logging", module: "commons-logging"
 }
 
-version = '0.0.5.SNAPSHOT'
 sourceCompatibility = 1.6
-targetCompatibility = 1.6
-
-def springVersion = '3.1.0.RELEASE'
-def slf4jVersion = '1.6.2'
+targetCompatibility = sourceCompatibility
+version = '0.0.5.RELEASE'
+springVersion = '3.1.0.RELEASE'
+slf4jVersion = '1.6.2'
 
 dependencies {
 	ajc "org.aspectj:aspectjtools:1.6.11"
