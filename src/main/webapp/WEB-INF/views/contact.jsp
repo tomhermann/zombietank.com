@@ -8,27 +8,34 @@
 </c:if>
 
 <c:url value="/contact" var="contactUrl" />
-<form:form action="${contactUrl}" method="post" modelAttribute="contactForm">
-	<div>
-		<span><form:errors path="name" /></span>
-		<span><form:label path="name">Name: </form:label></span>
-		<span><form:input path="name" /></span>
-	</div>
-	<div>
-		<span><form:errors path="email" /></span>
-		<span><form:label path="email">Email: </form:label></span>
-		<span><form:input path="email" /></span>
-	</div>
-	<div>
-		<span><form:errors path="subject" /></span>
-		<span><form:label path="subject">Subject: </form:label></span>
-		<span><form:input path="subject" /></span>
-	</div>
-	<div>
-		<span><form:errors path="message" /></span>
-		<span><form:label path="message">Message: </form:label></span>
-		<span><form:textarea path="message" cols="60"/></span>
-	</div>
-	
-	<p><button type="submit">Send</button></p>
+
+<form:form action="${contactUrl}" method="post" modelAttribute="contactForm" class="form-stacked">
+	<c:set var="nameErrors"><form:errors path="name"/></c:set>
+	<c:set var="emailErrors"><form:errors path="email"/></c:set>
+	<c:set var="subjectErrors"><form:errors path="subject"/></c:set>
+	<c:set var="messageErrors"><form:errors path="message"/></c:set>
+
+	<fieldset>
+		<div class="clearfix<c:if test="${not empty nameErrors}"> error</c:if>">
+			<form:label path="name">Name:</form:label>
+			<form:input path="name" />
+			<form:errors path="name" cssClass="help-inline" />
+		</div>
+		<div class="clearfix<c:if test="${not empty emailErrors}"> error</c:if>">
+			<form:label path="email">Email:</form:label>
+			<form:input path="email"/>
+			<form:errors path="email" cssClass="help-inline" />
+		</div>
+		<div class="clearfix<c:if test="${not empty subjectErrors}"> error</c:if>">
+			<form:label path="subject">Subject:</form:label>
+			<form:input path="subject"/>
+			<form:errors path="subject" cssClass="help-inline" />
+		</div>
+		<div class="clearfix<c:if test="${not empty messageErrors}"> error</c:if>">
+			<form:label path="message">Message:</form:label>
+			<form:textarea path="message" cols="60"/>
+			<form:errors path="message" cssClass="help-inline" />
+		</div>
+	</fieldset>
+	<p><button type="submit" class="btn">Send</button></p>
 </form:form>

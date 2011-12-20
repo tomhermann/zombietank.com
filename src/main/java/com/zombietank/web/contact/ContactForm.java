@@ -14,17 +14,17 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class ContactForm implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@NotBlank
+	@NotBlank(message="Please provide your name.")
 	private String name;
 
-	@Email
-	@NotBlank
+	@Email(message="Please provide a valid email address.")
+	@NotBlank(message="Please provide your email address.")
 	private String email;
 
-	@NotBlank
-	@Size(max = 150)
+	@NotBlank(message="Please provide a subject for your message.")
+	@Size(message="The subject cannot exceed 150 characters", max = 150)
 	private String subject;
 	
-	@NotBlank
+	@NotBlank(message="Please provide a message.")
 	private String message;
 }
