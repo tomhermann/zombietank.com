@@ -49,6 +49,6 @@ public class ContactControllerTest {
 		
 		contactController.submit(message, bindingResult, redirectAttributes);
 		
-		verify(redirectAttributes).addFlashAttribute("message", "Message has been sent!");
+		verify(redirectAttributes).addFlashAttribute("success", "Message has been sent!");
 	}
 }

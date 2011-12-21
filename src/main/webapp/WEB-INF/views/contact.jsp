@@ -3,8 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<c:if test="${not empty message}">
-	<div class="alert-message success">${message}</div>
+<c:if test="${not empty success}">
+	<div class="alert-message success">${success}</div>
 </c:if>
 
 <c:url value="/contact" var="contactUrl" />

@@ -26,7 +26,7 @@ public class ContactController {
 			return "contact";
 		}
 		contactService.process(message);
-		redirectAttributes.addFlashAttribute("message", "Message has been sent!");
+		redirectAttributes.addFlashAttribute("success", "Message has been sent!");
 		return "redirect:/contact";
 	}
 
