@@ -207,19 +207,24 @@ public class Email implements Serializable {
 	/***
 	 * Custom toString. Roo wasn't handling list fields quite like I'd hope.
 	 */
-	 public String toString() {
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Attachments: ").append(getAttachments() == null ? "null" : getAttachments().toString()).append(", ");
-		sb.append("To: ").append(getTo() == null ? "null" : getTo()).append(", ");
+		sb.append("Attachments: ")
+				.append(getAttachments() == null ? "null" : getAttachments()
+						.toString()).append(", ");
+		sb.append("To: ").append(getTo() == null ? "null" : getTo())
+				.append(", ");
 		sb.append("From: ").append(getFrom()).append(", ");
 		sb.append("ReplyTo: ").append(getReplyTo()).append(", ");
-		sb.append("Bcc: ").append(getBcc() == null ? "null" : getBcc()).append(", ");
-		sb.append("Cc: ").append(getCc() == null ? "null" : getCc()).append(", ");
+		sb.append("Bcc: ").append(getBcc() == null ? "null" : getBcc())
+				.append(", ");
+		sb.append("Cc: ").append(getCc() == null ? "null" : getCc())
+				.append(", ");
 		sb.append("Priority: ").append(getPriority()).append(", ");
 		sb.append("Subject: ").append(getSubject()).append(", ");
 		sb.append("Message: ").append(getMessage()).append(", ");
 		sb.append("Html: ").append(isHtml());
 		return sb.toString();
-	 }
+	}
 
 }
