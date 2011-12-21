@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <c:if test="${not empty message}">
-	<div class="${message.type.cssClass}">${message.text}</div>
+	<div class="alert-message success">${message}</div>
 </c:if>
 
 <c:url value="/contact" var="contactUrl" />

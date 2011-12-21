@@ -9,11 +9,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContactControllerTest {
 	@InjectMocks private ContactController contactController = new ContactController();
 	@Mock private ContactService contactService;
+	@Mock private RedirectAttributes redirectAttributes;
+	@Mock private BindingResult bindingResult;
 	
 	@Test
 	public void getNewFormReturnsNewFormInstance() {
@@ -23,10 +26,9 @@ public class ContactControllerTest {
 	@Test
 	public void whenThereAreFormErrorsReturnToInput() {
 		ContactForm message = new ContactForm();
-		BindingResult bindingResult = mock(BindingResult.class);
 		when(bindingResult.hasErrors()).thenReturn(true);
 		
-		String result = contactController.submit(message, bindingResult);
+		String result = contactController.submit(message, bindingResult, redirectAttributes);
 		
 		assertThat(result, is(equalTo("contact")));
 	}
@@ -35,9 +37,18 @@ public class ContactControllerTest {
 	public void whenThereAreNoErrorsProcessMessage() {
 		ContactForm message = new ContactForm();
 		
-		String result = contactController.submit(message, mock(BindingResult.class));
+		String result = contactController.submit(message, bindingResult, redirectAttributes);
 		
 		assertThat(result, is(equalTo("redirect:/contact")));
 		verify(contactService).process(message);
+	}
+
+	@Test
+	public void whenThereAreNoErrorsAddSuccessMessage() {
+		ContactForm message = new ContactForm();
+		
+		contactController.submit(message, bindingResult, redirectAttributes);
+		
+		verify(redirectAttributes).addFlashAttribute("message", "Message has been sent!");
 	}
 }
