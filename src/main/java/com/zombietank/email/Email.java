@@ -135,91 +135,91 @@ public class Email implements Serializable {
 	public boolean hasAttachments() {
 		return !attachments.isEmpty();
 	}
-	
+
 	public List<InternetAddress> getTo() {
-        return this.to;
-    }
+		return this.to;
+	}
 
 	public List<InternetAddress> getCc() {
-        return this.cc;
-    }
+		return this.cc;
+	}
 
 	public List<InternetAddress> getBcc() {
-        return this.bcc;
-    }
+		return this.bcc;
+	}
 
 	public java.util.List<Resource> getAttachments() {
-        return this.attachments;
-    }
+		return this.attachments;
+	}
 
 	public Map<String, String> getHeaders() {
-        return this.headers;
-    }
+		return this.headers;
+	}
 
 	public InternetAddress getFrom() {
-        return this.from;
-    }
+		return this.from;
+	}
 
 	public void setFrom(InternetAddress from) {
-        this.from = from;
-    }
+		this.from = from;
+	}
 
 	public InternetAddress getReplyTo() {
-        return this.replyTo;
-    }
+		return this.replyTo;
+	}
 
 	public void setReplyTo(InternetAddress replyTo) {
-        this.replyTo = replyTo;
-    }
+		this.replyTo = replyTo;
+	}
 
 	public String getSubject() {
-        return this.subject;
-    }
+		return this.subject;
+	}
 
 	public void setSubject(String subject) {
-        this.subject = subject;
-    }
+		this.subject = subject;
+	}
 
 	public Priority getPriority() {
-        return this.priority;
-    }
+		return this.priority;
+	}
 
 	public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
+		this.priority = priority;
+	}
 
 	public String getMessage() {
-        return this.message;
-    }
+		return this.message;
+	}
 
 	public void setMessage(String message) {
-        this.message = message;
-    }
+		this.message = message;
+	}
 
 	public boolean isHtml() {
-        return this.html;
-    }
+		return this.html;
+	}
 
 	public void setHtml(boolean html) {
-        this.html = html;
-    }
+		this.html = html;
+	}
 
 	/***
 	 * Custom toString. Roo wasn't handling list fields quite like I'd hope.
 	 */
-	public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Attachments: ").append(getAttachments() == null ? "null" : getAttachments().toString()).append(", ");
-        sb.append("To: ").append(getTo() == null ? "null" : getTo()).append(", ");
-        sb.append("From: ").append(getFrom()).append(", ");
-        sb.append("ReplyTo: ").append(getReplyTo()).append(", ");
-        sb.append("Bcc: ").append(getBcc() == null ? "null" : getBcc()).append(", ");
-        sb.append("Cc: ").append(getCc() == null ? "null" : getCc()).append(", ");
-        sb.append("Priority: ").append(getPriority()).append(", ");
-        sb.append("Subject: ").append(getSubject()).append(", ");
-        sb.append("Message: ").append(getMessage()).append(", ");
-        sb.append("Html: ").append(isHtml());
-        return sb.toString();
-    }
+	 public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Attachments: ").append(getAttachments() == null ? "null" : getAttachments().toString()).append(", ");
+		sb.append("To: ").append(getTo() == null ? "null" : getTo()).append(", ");
+		sb.append("From: ").append(getFrom()).append(", ");
+		sb.append("ReplyTo: ").append(getReplyTo()).append(", ");
+		sb.append("Bcc: ").append(getBcc() == null ? "null" : getBcc()).append(", ");
+		sb.append("Cc: ").append(getCc() == null ? "null" : getCc()).append(", ");
+		sb.append("Priority: ").append(getPriority()).append(", ");
+		sb.append("Subject: ").append(getSubject()).append(", ");
+		sb.append("Message: ").append(getMessage()).append(", ");
+		sb.append("Html: ").append(isHtml());
+		return sb.toString();
+	 }
 
 }
