@@ -1,6 +1,6 @@
+<%@ page import="java.util.Calendar" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,12 +9,12 @@
     <meta name="author" content="Tom Hermann">
     <meta name="description" content="Somewhere around the intersection of zombies and tanks.">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!-- html5 shim -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le styles -->
+	<!-- styles -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
     <style type="text/css">
       body {
@@ -22,7 +22,7 @@
       }
     </style>
 
-    <!-- Le fav and touch icons -->
+	<!-- favicons -->
     <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />">
     <link rel="apple-touch-icon" href="<c:url value="/resources/img/apple-touch-icon.png" />">
     <link rel="apple-touch-icon" sizes="72x72" href="<c:url value="/resources/img/apple-touch-icon-72x72.png" />">
@@ -46,7 +46,7 @@
 	  <decorator:body />
 
       <footer>
-        <p>&copy; zombietank.com 2011</p>
+        <p>&copy; zombietank.com <%= Calendar.getInstance().get(Calendar.YEAR) %></p>
       </footer>
     </div>
   </body>
