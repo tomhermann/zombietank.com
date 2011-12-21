@@ -16,7 +16,7 @@
 <div class="hero-unit zombieBackground" style="background-position: right;background-repeat:no-repeat; background-image: url('<c:url value="/resources/img/Zombie-icon.png" />"'>
 	<div class="span-two-thirds">
 		<h1>Braaaiiinnss!</h1>
-		<p>Watch out, zombies are hugry for your brain.</p>
+		<p>Watch out, zombies are hungry for your brain.</p>
 		<p>
 			<a class="btn primary large">Learn more &raquo;</a>
 		</p>
