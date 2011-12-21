@@ -11,9 +11,7 @@ import java.util.Map;
 import javax.mail.internet.InternetAddress;
 
 import org.springframework.core.io.Resource;
-import org.springframework.roo.addon.javabean.RooJavaBean;
 
-@RooJavaBean
 public class Email implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final List<InternetAddress> to = new ArrayList<InternetAddress>(1);
@@ -137,6 +135,74 @@ public class Email implements Serializable {
 	public boolean hasAttachments() {
 		return !attachments.isEmpty();
 	}
+	
+	public List<InternetAddress> getTo() {
+        return this.to;
+    }
+
+	public List<InternetAddress> getCc() {
+        return this.cc;
+    }
+
+	public List<InternetAddress> getBcc() {
+        return this.bcc;
+    }
+
+	public java.util.List<Resource> getAttachments() {
+        return this.attachments;
+    }
+
+	public Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+	public InternetAddress getFrom() {
+        return this.from;
+    }
+
+	public void setFrom(InternetAddress from) {
+        this.from = from;
+    }
+
+	public InternetAddress getReplyTo() {
+        return this.replyTo;
+    }
+
+	public void setReplyTo(InternetAddress replyTo) {
+        this.replyTo = replyTo;
+    }
+
+	public String getSubject() {
+        return this.subject;
+    }
+
+	public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+	public Priority getPriority() {
+        return this.priority;
+    }
+
+	public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+	public String getMessage() {
+        return this.message;
+    }
+
+	public void setMessage(String message) {
+        this.message = message;
+    }
+
+	public boolean isHtml() {
+        return this.html;
+    }
+
+	public void setHtml(boolean html) {
+        this.html = html;
+    }
 
 	/***
 	 * Custom toString. Roo wasn't handling list fields quite like I'd hope.
@@ -155,4 +221,5 @@ public class Email implements Serializable {
         sb.append("Html: ").append(isHtml());
         return sb.toString();
     }
+
 }

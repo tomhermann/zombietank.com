@@ -27,4 +27,45 @@ public class ContactForm implements Serializable {
 	
 	@NotBlank(message="Please provide a message.")
 	private String message;
+
+	public String getName() {
+        return this.name;
+    }
+
+	public void setName(String name) {
+        this.name = name;
+    }
+
+	public String getEmail() {
+        return this.email;
+    }
+
+	public void setEmail(String email) {
+        this.email = email;
+    }
+
+	public String getSubject() {
+        return this.subject;
+    }
+
+	public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+	public String getMessage() {
+        return this.message;
+    }
+
+	public void setMessage(String message) {
+        this.message = message;
+    }
+
+	public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Email: ").append(getEmail()).append(", ");
+        sb.append("Message: ").append(getMessage()).append(", ");
+        sb.append("Name: ").append(getName()).append(", ");
+        sb.append("Subject: ").append(getSubject());
+        return sb.toString();
+    }
 }

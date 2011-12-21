@@ -2,7 +2,6 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'eclipse'
 apply from:'https://raw.github.com/tomhermann/gradle-scripts/master/sources-javadoc.gradle'
-apply from:'https://raw.github.com/breskeby/gradleplugins/0.9-upgrade/aspectjPlugin/aspectJ.gradle'
 
 repositories { 
 	mavenRepo urls: 'http://repo.jfrog.org/artifactory/repo'
@@ -14,13 +13,11 @@ configurations {
 
 sourceCompatibility = 1.6
 targetCompatibility = sourceCompatibility
-version = '0.0.9.RELEASE'
+version = '0.1.0.RELEASE'
 springVersion = '3.1.0.RELEASE'
 slf4jVersion = '1.6.2'
 
 dependencies {
-	ajc "org.aspectj:aspectjtools:1.6.11"
-
 	compile (
 		'javax.inject:javax.inject:1',
 		"org.springframework:spring-webmvc:${springVersion}",
@@ -45,7 +42,6 @@ dependencies {
 
 	providedCompile (
 		'javax.servlet:servlet-api:2.5',
-		'org.springframework.roo:org.springframework.roo.annotations:1.0.2.RELEASE',
 		'javax.servlet.jsp:jsp-api:2.1',
 		'javax.persistence:persistence-api:1.0'
 	)
