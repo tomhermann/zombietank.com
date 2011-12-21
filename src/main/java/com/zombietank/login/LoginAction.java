@@ -10,6 +10,7 @@ public class LoginAction {
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String loginForm() {
+		System.out.println("Fire weapons!");
 		return "login";
 	}
 }

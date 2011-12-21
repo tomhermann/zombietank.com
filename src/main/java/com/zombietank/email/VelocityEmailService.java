@@ -42,8 +42,8 @@ public class VelocityEmailService extends AbstractEmailService {
 		log.debug("Using model: {}", model);
 
 		try {
-			email.setMessage(mergeTemplateIntoString(velocityEngine, templateLocation, model));
-			send(email);
+			String message = mergeTemplateIntoString(velocityEngine, templateLocation, model);
+			send(email.withMessage(message));
 		} catch(Exception e) {
 			log.error("Failed: email not sent to: {}", email.getTo(), e);
 		}

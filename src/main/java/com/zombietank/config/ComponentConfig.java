@@ -11,7 +11,6 @@ import com.zombietank.config.annotation.Prod;
 
 @Configuration
 @ComponentScan(basePackages = "com.zombietank", excludeFilters = { @Filter(Configuration.class) })
-@ImportResource("classpath:/com/zombietank/config/task-context.xml")
 public class ComponentConfig {
 
 	/** Properties to support the 'embedded' mode of operation. */
