@@ -37,5 +37,5 @@
 			<form:errors path="message" cssClass="help-inline" />
 		</div>
 	</fieldset>
-	<p><button type="submit" class="btn">Send</button></p>
+	<button type="submit" class="btn">Send</button>
 </form:form>
