@@ -3,7 +3,6 @@ package com.zombietank.config;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -49,6 +48,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
+	/*** Support for @ExceptionHandler annotations in controllers for more specific handling. */
 	public HandlerExceptionResolver annotationExceptionResolver() {
 		AnnotationMethodHandlerExceptionResolver resolver = new AnnotationMethodHandlerExceptionResolver();
 		resolver.setOrder(1);
@@ -56,6 +56,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
+	/*** Logs error with associated URL; redirects to error page. */
 	public HandlerExceptionResolver defaultExceptionResolver() {
 		AbstractHandlerExceptionResolver resolver = new AbstractHandlerExceptionResolver() {
 			@Override
