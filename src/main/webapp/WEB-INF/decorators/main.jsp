@@ -14,9 +14,11 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 
 	<!-- styles -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+
     <style type="text/css">
       body {
         padding-top: 60px;
