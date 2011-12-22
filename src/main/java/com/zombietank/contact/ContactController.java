@@ -1,4 +1,4 @@
-package com.zombietank.web.contact;
+package com.zombietank.contact;
 
 import javax.validation.Valid;
 

@@ -1,4 +1,4 @@
-package com.zombietank.web.contact;
+package com.zombietank.contact;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

@@ -22,6 +22,7 @@ dependencies {
 		'javax.inject:javax.inject:1',
 		"org.springframework:spring-webmvc:${springVersion}",
 		"org.springframework.security:spring-security-web:${springVersion}",
+		"org.springframework.security:spring-security-taglibs:${springVersion}",
 		"org.springframework.security:spring-security-config:${springVersion}",
 		"org.springframework:spring-jdbc:${springVersion}",
 		"org.springframework:spring-aspects:${springVersion}",

@@ -1,6 +1,7 @@
 <%@ page import="java.util.Calendar" %>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,19 +33,30 @@
 
   <body>
     <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <a class="brand" href="<c:url value="/" />">zombietank</a>
-          <ul class="nav">
-            <li class="active"><a href="<c:url value="/" />">Home</a></li>
-            <li><a href="<c:url value="/contact" />">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+		<div class="fill">
+			<div class="container">
+				<a class="brand" href="<c:url value="/" />">zombietank</a>
+				<ul class="nav">
+					<li class="active"><a href="<c:url value="/" />">Home</a></li>
+					<li><a href="<c:url value="/contact" />">Contact</a></li>
+				</ul>
+				<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
+	                <ul class="nav secondary-nav">
+						<li><a href="<c:url value="/login" />">Login</a></li>
+					</ul>
+		        </sec:authorize>
+		        <sec:authorize ifNotGranted="ROLE_ANONYMOUS">
+	                <ul class="nav secondary-nav">
+						<li><a href="<c:url value="/logout" />">Logout</a></li>
+					</ul>
+		        </sec:authorize>
+			</div>
+		</div>
+
+
+	</div>
     <div class="container">
 	  <decorator:body />
-
       <footer>
         <p>&copy; zombietank.com <%= Calendar.getInstance().get(Calendar.YEAR) %></p>
       </footer>

@@ -1,4 +1,4 @@
-package com.zombietank.web.contact;
+package com.zombietank.contact;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
@@ -10,6 +10,10 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.zombietank.contact.ContactController;
+import com.zombietank.contact.ContactForm;
+import com.zombietank.contact.ContactService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContactControllerTest {
