@@ -22,8 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
-	public void configureDefaultServletHandling(
-			DefaultServletHandlerConfigurer configurer) {
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
@@ -61,7 +60,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		AbstractHandlerExceptionResolver resolver = new AbstractHandlerExceptionResolver() {
 			@Override
 			protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-				logger.error(ReflectionToStringBuilder.toString(request), ex);
+				logger.error("Error generated at: " + request.getRequestURL(), ex);
 				return new ModelAndView("redirect:/error");
 			}
 		};
