@@ -1,29 +1,24 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 
 <head>
 	<title>zombietank.com - Home</title>
-	<style type="text/css">
-		.zombieBackground {
-			background-image: url('<c:url value="/resources/img/Zombie-icon.png" />')
-			background-position: right;
-			background-repeat:no-repeat;
-		}
-	</style>
 </head>
 
-<!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit zombieBackground" style="background-position: right;background-repeat:no-repeat; background-image: url('<c:url value="/resources/img/Zombie-icon.png" />"'>
-	<div class="span-two-thirds">
-		<h1>Braaaiiinnss!</h1>
-		<p>Watch out, zombies are hungry for your brain.</p>
-		<p>
-			<a class="btn primary large">Learn more &raquo;</a>
-		</p>
+<div class="hero-unit">
+	<div class="row">
+		<div class="span7">
+			<h1>Braaaiiinnss!</h1>
+			<p>Watch out, zombies are hungry for your brain.</p>
+			<p>
+				<a class="btn primary large">Learn more &raquo;</a>
+			</p>
+		</div>
+		<div class="pull-right">
+			<img alt="Zombie! Ah!" src="<c:url value="/resources/img/Zombie-icon.png" />">
+		</div>
 	</div>
 </div>
 
-<!-- Example row of columns -->
 <div class="row">
 	<div class="span-one-third">
 		<h2>Zombie Patrol</h2>

@@ -13,7 +13,7 @@ configurations {
 
 sourceCompatibility = 1.6
 targetCompatibility = sourceCompatibility
-version = '0.1.0.RELEASE'
+version = '0.1.1.RELEASE'
 springVersion = '3.1.0.RELEASE'
 slf4jVersion = '1.6.2'
 
