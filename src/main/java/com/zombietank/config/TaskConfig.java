@@ -13,7 +13,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @EnableAsync(mode = AdviceMode.ASPECTJ)
 public class TaskConfig implements AsyncConfigurer {
 
-	@Override
 	public Executor getAsyncExecutor() {
 		return taskExecutor();
 	}
