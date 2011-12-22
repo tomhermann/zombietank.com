@@ -41,6 +41,9 @@
 				<ul class="nav">
 					<li><a href="<c:url value="/" />">Home</a></li>
 					<li><a href="<c:url value="/contact" />">Contact</a></li>
+					<sec:authorize ifAnyGranted="ROLE_SUPERVISOR">
+						<li><a href="<c:url value="/configure-me" />">Admin</a></li>
+					</sec:authorize>
 				</ul>
 				<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
 	                <ul class="nav secondary-nav">

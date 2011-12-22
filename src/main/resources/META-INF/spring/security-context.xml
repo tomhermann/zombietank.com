@@ -5,14 +5,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<global-method-security pre-post-annotations="enabled" />
+	<global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
 
 	<http use-expressions="true">
 		<form-login login-page="/login" login-processing-url="/login/authenticate" authentication-failure-url="/login?error=true"/>
 		<logout logout-url="/logout" delete-cookies="JSESSIONID"/>
 		<remember-me/>
-		<intercept-url pattern="/secure/panda/**" access="hasRole('supervisor')" />
-		<intercept-url pattern="/secure/**" access="isAuthenticated()" />
 		<intercept-url pattern="/**" access="permitAll" />
 	</http>
 
@@ -25,16 +23,7 @@
 			<user-service>
 				<user name="rod"
 					password="4efe081594ce25ee4efd9f7067f7f678a347bccf2de201f3adf2a3eb544850b465b4e51cdc3fcdde"
-					authorities="supervisor, user, teller" />
-				<user name="dianne"
-					password="957ea522524a41cbfb649a3e293d56268f840fd5b661b499b07858bc020d6d223f912e3ab303b00f"
-					authorities="user,teller" />
-				<user name="scott"
-					password="fb1f9e48058d30dc21c35ab4cf895e2a80f2f03fac549b51be637196dfb6b2b7276a89c65e38b7a1"
-					authorities="user" />
-				<user name="peter"
-					password="e175750688deee19d7179d444bfaf92129f4eea8b4503d83eb8f92a7dd9cda5fbae73638c913e420"
-					authorities="user" />
+					authorities="ROLE_SUPERVISOR, ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
