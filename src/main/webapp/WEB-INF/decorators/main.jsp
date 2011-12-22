@@ -54,8 +54,6 @@
 		        </sec:authorize>
 			</div>
 		</div>
-
-
 	</div>
     <div class="container">
 	  <decorator:body />
