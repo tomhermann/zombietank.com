@@ -7,10 +7,10 @@
 
 	<global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
 
-	<http use-expressions="true">
-		<form-login login-page="/login" login-processing-url="/login/authenticate" authentication-failure-url="/login?error=true"/>
-		<logout logout-url="/logout" delete-cookies="JSESSIONID"/>
-		<remember-me/>
+	<http use-expressions="true" >
+		<form-login login-page="/login" login-processing-url="/login/authenticate" authentication-failure-url="/login?error=true" />
+		<logout logout-url="/logout" delete-cookies="JSESSIONID" />
+		<remember-me />
 		<intercept-url pattern="/**" access="permitAll" />
 	</http>
 

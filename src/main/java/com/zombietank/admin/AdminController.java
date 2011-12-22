@@ -1,4 +1,4 @@
-package com.zombietank.configure;
+package com.zombietank.admin;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
