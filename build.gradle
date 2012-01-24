@@ -1,5 +1,6 @@
 apply plugin: 'war'
 apply plugin: 'jetty'
+apply plugin: 'gradle'
 apply plugin: 'eclipse'
 apply from:'https://raw.github.com/tomhermann/gradle-scripts/master/sources-javadoc.gradle'
 
@@ -71,3 +72,6 @@ war {
 		from 'src/main/resources/META-INF'
 	}
 }
+
+task stage(dependsOn: ['clean', 'install'])
+
