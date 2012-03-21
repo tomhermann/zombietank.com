@@ -1,4 +1,10 @@
 .classpath
 .project
-.settings/**/*
-bin/**/*
+.gradle
+.settings
+bin
+build
+*.class
+.springBeans
+test.lock.db
+test.h2.db
