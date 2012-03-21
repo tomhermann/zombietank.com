@@ -1,6 +1,7 @@
 package com.zombietank.contact;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
+
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ public class ContactService {
 	private final EmailService emailService;
 	private final Environment environment;
 
-	@Autowired
+	@Inject
 	public ContactService(EmailService emailService, Environment environment) {
 		this.emailService = emailService;
 		this.environment = environment;
