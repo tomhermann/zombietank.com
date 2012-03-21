@@ -5,8 +5,8 @@
  _|_|_|_|    _|_|    _|    _|    _|  _|_|_|    _|    _|_|_|      _|_|    _|_|_|  _|    _|  _|    _|  
                                                                                                      
                                                                                                      
-Spring MVC 3.1 based web example. Includes:
-	- Spring 3.1 Profile Support (@Dev, @Prod)
+Spring MVC 3.1.1 based web example. Includes:
+	- Spring 3 Profile Support (@Dev, @Prod)
 	- Spring Security - with custom login form
 	- Spring based email support
 	- Sitemesh2

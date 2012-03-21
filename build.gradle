@@ -11,22 +11,18 @@ configurations {
 	all*.exclude group: "commons-logging", module: "commons-logging"
 }
 
-group = 'com.zombietank'
-version = '0.1.5.RELEASE'
 sourceCompatibility = 1.6
 targetCompatibility = sourceCompatibility
-springVersion = '3.1.0.RELEASE'
-slf4jVersion = '1.6.2'
 
 dependencies {
 	compile (
 		'javax.inject:javax.inject:1',
 		"org.springframework:spring-webmvc:${springVersion}",
-		"org.springframework.security:spring-security-web:${springVersion}",
-		"org.springframework.security:spring-security-taglibs:${springVersion}",
-		"org.springframework.security:spring-security-config:${springVersion}",
 		"org.springframework:spring-jdbc:${springVersion}",
 		"org.springframework:spring-aspects:${springVersion}",
+		"org.springframework.security:spring-security-web:${springSecurityVersion}",
+		"org.springframework.security:spring-security-taglibs:${springSecurityVersion}",
+		"org.springframework.security:spring-security-config:${springSecurityVersion}",
 		'org.aspectj:aspectjrt:1.6.11',
 		'cglib:cglib:2.2.2',
 		"org.slf4j:slf4j-api:${slf4jVersion}",
@@ -34,7 +30,7 @@ dependencies {
 		"org.slf4j:slf4j-log4j12:${slf4jVersion}",
 		'javax.validation:validation-api:1.0.0.GA',
 		'org.hibernate:hibernate-validator:4.2.0.Final',
-		'org.codehaus.jackson:jackson-mapper-asl:1.8.3',
+		'org.codehaus.jackson:jackson-mapper-asl:1.9.4',
 		'commons-fileupload:commons-fileupload:1.2.2',
 		'javax.mail:mail:1.4.1',
 		'org.apache.velocity:velocity:1.7',
@@ -56,7 +52,7 @@ dependencies {
 	testCompile (
 		'junit:junit:4.10',
 		'org.hamcrest:hamcrest-all:1.1',
-		'org.mockito:mockito-all:1.8.5'
+		'org.mockito:mockito-all:1.9.0'
 	)
 }
 
