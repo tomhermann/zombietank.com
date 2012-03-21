@@ -203,28 +203,19 @@ public class Email implements Serializable {
 	public void setHtml(boolean html) {
 		this.html = html;
 	}
-
-	/***
-	 * Custom toString. Roo wasn't handling list fields quite like I'd hope.
-	 */
+	
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Attachments: ")
-				.append(getAttachments() == null ? "null" : getAttachments()
-						.toString()).append(", ");
-		sb.append("To: ").append(getTo() == null ? "null" : getTo())
-				.append(", ");
-		sb.append("From: ").append(getFrom()).append(", ");
-		sb.append("ReplyTo: ").append(getReplyTo()).append(", ");
-		sb.append("Bcc: ").append(getBcc() == null ? "null" : getBcc())
-				.append(", ");
-		sb.append("Cc: ").append(getCc() == null ? "null" : getCc())
-				.append(", ");
-		sb.append("Priority: ").append(getPriority()).append(", ");
-		sb.append("Subject: ").append(getSubject()).append(", ");
-		sb.append("Message: ").append(getMessage()).append(", ");
-		sb.append("Html: ").append(isHtml());
+		sb.append("To: ").append(to == null ? "null" : to).append(", ");
+		sb.append("From: ").append(from).append(", ");
+		sb.append("ReplyTo: ").append(replyTo).append(", ");
+		sb.append("Bcc: ").append(bcc == null ? "null" : bcc).append(", ");
+		sb.append("Cc: ").append(cc == null ? "null" : cc).append(", ");
+		sb.append("Subject: ").append(subject).append(", ");
+		sb.append("Message: ").append(message).append(", ");
+		sb.append("Attachments: ").append(getAttachments() == null ? "null" : attachments).append(", ");
+		sb.append("Html: ").append(html);
 		return sb.toString();
 	}
-
 }
