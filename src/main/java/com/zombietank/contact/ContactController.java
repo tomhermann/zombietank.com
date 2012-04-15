@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.zombietank.email.exception.EmailException;
+
 @Controller
 @RequestMapping("/contact")
 public class ContactController {
@@ -21,7 +23,7 @@ public class ContactController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String submit(@Valid ContactForm message, BindingResult result, RedirectAttributes redirectAttributes) {
+	public String submit(@Valid ContactForm message, BindingResult result, RedirectAttributes redirectAttributes) throws EmailException {
 		if (result.hasErrors()) {
 			return "contact";
 		}

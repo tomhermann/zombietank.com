@@ -4,7 +4,9 @@ apply plugin: 'maven'
 apply plugin: 'eclipse'
 
 repositories { 
-	mavenCentral()
+	maven {
+		url "http://iheartsoftware.com/nexus/content/groups/public/"
+	}
 }
 
 configurations {
@@ -32,8 +34,7 @@ dependencies {
 		'org.hibernate:hibernate-validator:4.2.0.Final',
 		'org.codehaus.jackson:jackson-mapper-asl:1.9.4',
 		'commons-fileupload:commons-fileupload:1.2.2',
-		'javax.mail:mail:1.4.1',
-		'org.apache.velocity:velocity:1.7',
+		'com.zombietank:com.zombietank.email:1.0.2.RELEASE',
 		'javax.servlet:jstl:1.2',
 		'opensymphony:sitemesh:2.4.2'
 	)

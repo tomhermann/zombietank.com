@@ -28,7 +28,7 @@ public class ContactControllerTest {
 	}
 
 	@Test
-	public void whenThereAreFormErrorsReturnToInput() {
+	public void whenThereAreFormErrorsReturnToInput() throws Exception {
 		ContactForm message = new ContactForm();
 		when(bindingResult.hasErrors()).thenReturn(true);
 		
@@ -38,7 +38,7 @@ public class ContactControllerTest {
 	}
 
 	@Test
-	public void whenThereAreNoErrorsProcessMessage() {
+	public void whenThereAreNoErrorsProcessMessage() throws Exception {
 		ContactForm message = new ContactForm();
 		
 		String result = contactController.submit(message, bindingResult, redirectAttributes);
@@ -48,7 +48,7 @@ public class ContactControllerTest {
 	}
 
 	@Test
-	public void whenThereAreNoErrorsAddSuccessMessage() {
+	public void whenThereAreNoErrorsAddSuccessMessage() throws Exception {
 		ContactForm message = new ContactForm();
 		
 		contactController.submit(message, bindingResult, redirectAttributes);
