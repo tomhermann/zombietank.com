@@ -10,9 +10,9 @@ Spring MVC 3.1.1 based web example
 * jquery
 * gradle build
 
-Getting started
----------------
-$ gradle jettyRun
-$ gradle build
-$ gradle eclipse
+Run one of the following to get started
+---------------------------------------
+* gradle jettyRun
+* gradle build
+* gradle eclipse
 
