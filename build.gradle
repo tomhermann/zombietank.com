@@ -2,10 +2,11 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'maven'
 apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
 
 repositories { 
 	maven {
-		url "http://iheartsoftware.com/nexus/content/groups/public/"
+		url 'http://iheartsoftware.com/nexus/content/groups/public'
 	}
 }
 
