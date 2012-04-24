@@ -1,16 +1,18 @@
-Spring MVC 3.1.1 based web example. Includes:
-	- Spring 3 Profile Support (@Dev, @Prod)
-	- Spring Security - with custom login form
-	- Spring based email support
-	- Sitemesh2
-	- slf4j + log4j based logging
-	- Embedded database support
-	- Twitter bootstrap styles
-	- jquery
-	- gradle build
+Spring MVC 3.1.1 based web example
+==================================
+* Spring 3 Profile Support (@Dev, @Prod)
+* Spring Security - with custom login form
+* Spring based email support
+* Sitemesh2
+* slf4j + log4j based logging
+* Embedded database support
+* Twitter bootstrap styles
+* jquery
+* gradle build
 
-try one of these to get started:
-	$ gradle jettyRun
-	$ gradle build
-	$ gradle eclipse
-	(or use SpringSource STS with the gradle plugin.)
+Getting started
+---------------
+$ gradle jettyRun
+$ gradle build
+$ gradle eclipse
+
