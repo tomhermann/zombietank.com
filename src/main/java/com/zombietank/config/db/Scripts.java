@@ -23,6 +23,17 @@ public class Scripts implements Iterable<Script> {
 		return this;
 	}
 
+	public Scripts addSystemScript(String scriptLocation) throws IOException {
+		Script script = scriptLoader.loadScript(scriptLocation);
+		script.setSystem(true);
+		scripts.add(script);
+		return this;
+	}
+
+	public Set<Script> getScripts() {
+		return scripts;
+	}
+
 	@Override
 	public Iterator<Script> iterator() {
 		return scripts.iterator();

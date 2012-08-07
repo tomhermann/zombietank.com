@@ -6,6 +6,7 @@ public class Script {
 	private final String contents;
 	private final String path;
 	private final String checksum;
+	private boolean system;
 
 	public Script(String path, String contents, String checksum) {
 		this.path = path;
@@ -24,9 +25,17 @@ public class Script {
 	public String getChecksum() {
 		return checksum;
 	}
-	
+
+	public boolean isSystem() {
+		return system;
+	}
+
+	public void setSystem(boolean system) {
+		this.system = system;
+	}
+
 	@Override
 	public String toString() {
-		return Objects.toStringHelper(this).add("path", path).add("checksum", checksum).toString();
+		return Objects.toStringHelper(this).add("path", path).add("system", system).add("checksum", checksum).toString();
 	}
 }

@@ -12,7 +12,11 @@ public class ScriptHistory {
 	}
 	
 	public boolean hasBeenRun(Script script) {
-		return jdbcTemplate.queryForInt("select count(*) from script_history where checksum = ?") > 0;
+		return jdbcTemplate.queryForInt("select count(*) from script_history where checksum = ?", script.getChecksum()) > 0;
+	}
+	
+	public boolean hasNotBeenRun(Script script) {
+		return !hasBeenRun(script);
 	}
 	
 	public void recordRun(Script script) {

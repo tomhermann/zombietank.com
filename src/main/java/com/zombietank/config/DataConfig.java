@@ -53,7 +53,7 @@ public class DataConfig {
 		
 		@Bean
 		public DatabaseBootstrap databaseBootstrap() throws IOException {
-			Scripts scripts = new Scripts().addScript("sql/schema.sql").addScript("sql/data.sql");
+			Scripts scripts = new Scripts().addSystemScript("sql/scriptHistory.sql").addSystemScript("sql/schema.sql").addScript("sql/data.sql");
 			return new DatabaseBootstrap(scripts, new ScriptRunner(new ScriptHistory(dataSource()), dataSource()));
 		}
 		

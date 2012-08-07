@@ -15,9 +15,13 @@ public class ScriptRunner {
 	}
 	
 	public void execute(Script script) throws DataAccessException {
-		if(!scriptHistory.hasBeenRun(script)) {
-			jdbcTemplate.execute(script.getContents());
-			scriptHistory.recordRun(script);
+		if(script.isSystem() || scriptHistory.hasNotBeenRun(script)) {
+			run(script);
 		}
+	}
+	
+	private void run(Script script) {
+		jdbcTemplate.execute(script.getContents());
+		scriptHistory.recordRun(script);
 	}
 }
