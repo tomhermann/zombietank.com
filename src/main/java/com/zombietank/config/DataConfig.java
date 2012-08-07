@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.zombietank.config.annotation.Dev;
 import com.zombietank.config.annotation.Prod;
 import com.zombietank.config.db.DatabaseBootstrap;
-import com.zombietank.config.db.ScriptLoader;
 import com.zombietank.config.db.ScriptRunner;
 import com.zombietank.config.db.Scripts;
 
@@ -53,7 +52,7 @@ public class DataConfig {
 		
 		@Bean
 		public DatabaseBootstrap databaseBootstrap() throws IOException {
-			Scripts scripts = new Scripts(new ScriptLoader()).addScript("sql/schema.sql").addScript("sql/data.sql");
+			Scripts scripts = new Scripts().addScript("sql/schema.sql").addScript("sql/data.sql");
 			return new DatabaseBootstrap(scripts, new ScriptRunner(dataSource()));
 		}
 		

@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.ResourceLoader;
 
+import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 import com.google.common.io.Closeables;
 
@@ -30,7 +31,7 @@ public class ScriptLoader {
 		try {
 			MessageDigest messageDigest = md5Digest();
 			inputStream = new DigestInputStream(resourceLoader.getResource(path).getInputStream(), messageDigest);
-			String contents = CharStreams.toString(new InputStreamReader(inputStream, "UTF-8"));
+			String contents = CharStreams.toString(new InputStreamReader(inputStream, Charsets.UTF_8));
 			String md5 = new BigInteger(1, messageDigest.digest()).toString(16);
 			return new Script(path, contents, md5);
 		} finally {

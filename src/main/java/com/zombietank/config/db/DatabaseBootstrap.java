@@ -14,12 +14,16 @@ public class DatabaseBootstrap implements InitializingBean {
 		this.scriptRunner = scriptRunner;
 	}
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
+	public void executeScripts() {
 		for (Script script : scripts) {
-			logger.info("Executing {}, checksum: {}", script.getPath(), script.getChecksum());
+			logger.info("Executing {}", script);
 			scriptRunner.execute(script);
 			logger.info("Execution complete.");
 		}			
+	}
+	
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		executeScripts();
 	}
 }

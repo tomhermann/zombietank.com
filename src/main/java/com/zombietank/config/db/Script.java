@@ -1,5 +1,7 @@
 package com.zombietank.config.db;
 
+import com.google.common.base.Objects;
+
 public class Script {
 	private final String contents;
 	private final String path;
@@ -21,5 +23,10 @@ public class Script {
 
 	public String getChecksum() {
 		return checksum;
+	}
+	
+	@Override
+	public String toString() {
+		return Objects.toStringHelper(this).add("path", path).add("checksum", checksum).toString();
 	}
 }
