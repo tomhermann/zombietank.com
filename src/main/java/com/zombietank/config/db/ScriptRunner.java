@@ -1,7 +1,5 @@
 package com.zombietank.config.db;
 
-import javax.sql.DataSource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -12,9 +10,9 @@ public class ScriptRunner {
 	private final ScriptHistory scriptHistory;
 	private final JdbcTemplate jdbcTemplate;
 
-	public ScriptRunner(ScriptHistory scriptHistory, DataSource dataSource) {
+	public ScriptRunner(ScriptHistory scriptHistory, JdbcTemplate jdbcTemplate) {
 		this.scriptHistory = scriptHistory;
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.jdbcTemplate = jdbcTemplate;
 	}
 	
 	public void execute(Script script) throws DataAccessException {

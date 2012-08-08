@@ -50,11 +50,13 @@ public class DataConfig {
 
 	@Dev @Configuration
 	static class Development {
+		@Inject
+		private JdbcTemplate jdbcTemplate;
 		
 		@Bean
 		public DatabaseBootstrap databaseBootstrap() throws IOException {
 			Scripts scripts = new Scripts().addSystemScript("sql/scriptHistory.sql").addSystemScript("sql/schema.sql").addScript("sql/data.sql");
-			return new DatabaseBootstrap(scripts, new ScriptRunner(new ScriptHistory(dataSource()), dataSource()));
+			return new DatabaseBootstrap(scripts, new ScriptRunner(new ScriptHistory(dataSource()), jdbcTemplate));
 		}
 		
 		@Bean(destroyMethod = "shutdown")
