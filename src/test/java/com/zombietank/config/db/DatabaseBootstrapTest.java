@@ -4,9 +4,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -14,14 +14,9 @@ import com.google.common.collect.ImmutableSet;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DatabaseBootstrapTest {
-	private DatabaseBootstrap databaseBootstrap;
+	@InjectMocks private DatabaseBootstrap databaseBootstrap;
 	@Mock private Scripts scripts;
 	@Mock private ScriptRunner scriptRunner;
-	
-	@Before
-	public void setup() {
-		this.databaseBootstrap = new DatabaseBootstrap(scripts, scriptRunner);
-	}
 	
 	@Test
 	public void onExecuteScriptsExecuteEachOne() {
