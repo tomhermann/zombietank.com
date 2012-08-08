@@ -55,7 +55,7 @@ dependencies {
    testCompile (
       'junit:junit:4.10',
       'org.hamcrest:hamcrest-all:1.1',
-      'org.mockito:mockito-all:1.9.0'
+      'org.mockito:mockito-all:1.9.5-rc1'
    )
 }
 

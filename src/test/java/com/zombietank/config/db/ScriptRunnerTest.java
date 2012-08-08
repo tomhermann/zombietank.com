@@ -9,28 +9,21 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ScriptRunnerTest {
-	private ScriptRunner scriptRunner;
-
-	@Mock
-	private ScriptHistory scriptHistory;
-
-	@Mock
-	private Script script;
-	
-	@Mock
-	private JdbcTemplate jdbcTemplate;
-	
+	@InjectMocks private ScriptRunner scriptRunner;
+	@Mock private ScriptHistory scriptHistory;
+	@Mock private Script script;
+	@Mock private JdbcTemplate jdbcTemplate;
 	
 	@Before
 	public void setup() {
 		when(script.getContents()).thenReturn(UUID.randomUUID().toString());
-		this.scriptRunner = new ScriptRunner(scriptHistory, jdbcTemplate);
 	}
 	
 	@Test
@@ -88,5 +81,4 @@ public class ScriptRunnerTest {
 		
 		verifyZeroInteractions(jdbcTemplate);
 	}
-
 }

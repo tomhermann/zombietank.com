@@ -1,9 +1,8 @@
 package com.zombietank.config.db;
 
-import static org.mockito.Mockito.*;
-
-import java.util.HashSet;
-import java.util.Set;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,25 +15,20 @@ import com.google.common.collect.ImmutableSet;
 @RunWith(MockitoJUnitRunner.class)
 public class DatabaseBootstrapTest {
 	private DatabaseBootstrap databaseBootstrap;
-	private Set<Script> scriptCollection;
 	@Mock private Scripts scripts;
 	@Mock private ScriptRunner scriptRunner;
 	
 	@Before
 	public void setup() {
-		scriptCollection = new HashSet<Script>();
 		this.databaseBootstrap = new DatabaseBootstrap(scripts, scriptRunner);
 	}
 	
-	
 	@Test
-	public void onExecuteScriptsExecuteEach() {
+	public void onExecuteScriptsExecuteEachOne() {
 		Script script1 = mock(Script.class);
 		Script script2 = mock(Script.class);
-		scriptCollection.addAll(ImmutableSet.of(script1, script2));
-		when(scripts.getScripts()).thenReturn(scriptCollection);
-		// maybe this iterable Scripts business was a bad idea.
-		when(scripts.iterator()).thenReturn(scriptCollection.iterator()); 
+		// Scripts is an Iterable<Script>; it is implementation specific, but this works. 
+		when(scripts.iterator()).thenReturn(ImmutableSet.of(script1, script2).iterator()); 
 		
 		databaseBootstrap.executeScripts();
 		
@@ -42,4 +36,15 @@ public class DatabaseBootstrapTest {
 		verify(scriptRunner).execute(script2);
 	}
 
+	@Test
+	public void afterPropertiesSetExecutesScripts() throws Exception {
+		Script script1 = mock(Script.class);
+		Script script2 = mock(Script.class);
+		when(scripts.iterator()).thenReturn(ImmutableSet.of(script1, script2).iterator()); 
+		
+		databaseBootstrap.afterPropertiesSet();
+		
+		verify(scriptRunner).execute(script1);
+		verify(scriptRunner).execute(script2);
+	}
 }
