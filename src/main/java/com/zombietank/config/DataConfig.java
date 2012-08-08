@@ -1,5 +1,7 @@
 package com.zombietank.config;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -18,6 +20,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zombietank.config.annotation.Dev;
 import com.zombietank.config.annotation.Prod;
+import com.zombietank.config.db.DatabaseBootstrap;
+import com.zombietank.config.db.ScriptHistory;
+import com.zombietank.config.db.ScriptRunner;
+import com.zombietank.config.db.Scripts;
 
 @Configuration
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
@@ -44,9 +50,18 @@ public class DataConfig {
 
 	@Dev @Configuration
 	static class Development {
+		@Inject
+		private JdbcTemplate jdbcTemplate;
+		
+		@Bean
+		public DatabaseBootstrap databaseBootstrap() throws IOException {
+			Scripts scripts = new Scripts().addSystemScript("sql/scriptHistory.sql").addSystemScript("sql/schema.sql").addScript("sql/data.sql");
+			return new DatabaseBootstrap(scripts, new ScriptRunner(new ScriptHistory(dataSource()), jdbcTemplate));
+		}
+		
 		@Bean(destroyMethod = "shutdown")
 		public DataSource dataSource() {
-			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("sql/schema.sql").addScript("sql/data.sql").build();
+			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
 		}
 	}
 
@@ -54,7 +69,8 @@ public class DataConfig {
 	static class Production {
 		@Inject
 		private Environment environment;
-
+		
+		
 		@Bean(destroyMethod = "dispose")
 		public DataSource dataSource() throws NamingException {
 			String dsName = environment.getProperty("database.datasourceName");

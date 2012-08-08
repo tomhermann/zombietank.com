@@ -37,6 +37,7 @@ dependencies {
       'commons-fileupload:commons-fileupload:1.2.2',
       'com.zombietank:com.zombietank.email:1.0.3.RELEASE',
       'javax.servlet:jstl:1.2',
+      'com.google.guava:guava:12.0.1',
       'opensymphony:sitemesh:2.4.2'
    )
 
@@ -54,7 +55,7 @@ dependencies {
    testCompile (
       'junit:junit:4.10',
       'org.hamcrest:hamcrest-all:1.1',
-      'org.mockito:mockito-all:1.9.0'
+      'org.mockito:mockito-all:1.9.5-rc1'
    )
 }
 
