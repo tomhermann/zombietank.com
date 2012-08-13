@@ -2,6 +2,7 @@ package com.zombietank.contact;
 
 import java.util.Collection;
 
+import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -9,11 +10,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ContactMessageJdbcRepository implements ContactMessageRepository {
 	private final JdbcTemplate jdbcTemplate;
 	private final SimpleJdbcInsert insertMessage;
 
+	@Inject
 	public ContactMessageJdbcRepository(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		this.insertMessage = new SimpleJdbcInsert(dataSource).withTableName("contact_messages").usingGeneratedKeyColumns("id");
