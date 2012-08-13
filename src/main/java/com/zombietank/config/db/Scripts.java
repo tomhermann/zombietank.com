@@ -19,17 +19,20 @@ public class Scripts implements Iterable<Script> {
 	}
 	
 	public Scripts addScript(String scriptLocation) throws IOException {
-		scripts.add(scriptLoader.loadScript(scriptLocation));
-		return this;
+		return addScript(scriptLoader.loadScript(scriptLocation));
 	}
 
 	public Scripts addSystemScript(String scriptLocation) throws IOException {
 		Script script = scriptLoader.loadScript(scriptLocation);
 		script.setSystem(true);
+		return addScript(script);
+	}
+
+	public Scripts addScript(Script script) {
 		scripts.add(script);
 		return this;
 	}
-
+	
 	public Set<Script> getScripts() {
 		return scripts;
 	}

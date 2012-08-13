@@ -19,7 +19,7 @@ public class ScriptRunner {
 		if(script.isSystem() || scriptHistory.hasNotBeenRun(script)) {
 			run(script);
 		} else {
-			logger.info("Not running {}", script.getPath());
+			logger.info("Not running {}", script);
 		}
 	}
 	

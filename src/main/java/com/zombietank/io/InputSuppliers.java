@@ -6,7 +6,6 @@ import java.io.InputStream;
 import com.google.common.base.Preconditions;
 import com.google.common.io.InputSupplier;
 
-
 public class InputSuppliers {
 	
 	public static InputSupplier<InputStream> forInputStream(final InputStream inputStream) {
