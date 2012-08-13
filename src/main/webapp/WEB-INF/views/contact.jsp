@@ -9,7 +9,7 @@
 
 <c:url value="/contact" var="contactUrl" />
 
-<form:form action="${contactUrl}" method="post" modelAttribute="contactForm" class="form-stacked">
+<form:form action="${contactUrl}" method="post" modelAttribute="contactMessage" class="form-stacked">
 	<c:set var="nameErrors"><form:errors path="name"/></c:set>
 	<c:set var="emailErrors"><form:errors path="email"/></c:set>
 	<c:set var="subjectErrors"><form:errors path="subject"/></c:set>

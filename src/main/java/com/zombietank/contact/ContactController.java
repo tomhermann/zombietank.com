@@ -18,12 +18,12 @@ public class ContactController {
 	private ContactService contactService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ContactForm getNewForm() {
-		return new ContactForm();
+	public ContactMessage getContactMessage() {
+		return new ContactMessage();
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String submit(@Valid ContactForm message, BindingResult result, RedirectAttributes redirectAttributes) throws EmailException {
+	public String submit(@Valid ContactMessage message, BindingResult result, RedirectAttributes redirectAttributes) throws EmailException {
 		if (result.hasErrors()) {
 			return "contact";
 		}
@@ -31,5 +31,4 @@ public class ContactController {
 		redirectAttributes.addFlashAttribute("success", "Message has been sent!");
 		return "redirect:/contact";
 	}
-
 }

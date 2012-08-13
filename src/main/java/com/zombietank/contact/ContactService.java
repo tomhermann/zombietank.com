@@ -20,7 +20,7 @@ public class ContactService {
 		this.environment = environment;
 	}
 
-	public void process(ContactForm message) throws EmailException {
+	public void process(ContactMessage message) throws EmailException {
 		Email email = new Email()
 						.to(environment.getProperty("contact.email"), 
 							environment.getProperty("contact.name"))
