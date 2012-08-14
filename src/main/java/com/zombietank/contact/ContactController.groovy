@@ -13,22 +13,21 @@ import com.zombietank.email.exception.EmailException;
 
 @Controller
 @RequestMapping("/contact")
-public class ContactController {
-	@Inject
-	private ContactService contactService;
+class ContactController {
+	@Inject ContactService contactService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ContactMessage getContactMessage() {
-		return new ContactMessage();
+	ContactMessage getContactMessage() {
+		new ContactMessage()
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String submit(@Valid ContactMessage message, BindingResult result, RedirectAttributes redirectAttributes) throws EmailException {
+	String submit(@Valid ContactMessage message, BindingResult result, RedirectAttributes redirectAttributes) throws EmailException {
 		if (result.hasErrors()) {
 			return "contact";
 		}
-		contactService.process(message);
+		contactService.process message;
 		redirectAttributes.addFlashAttribute("success", "Message has been sent!");
-		return "redirect:/contact";
+		"redirect:/contact";
 	}
 }
