@@ -79,11 +79,8 @@ war {
 
 task stage(dependsOn: ['clean', 'install'])
 
+// Combining groovy source under the java srcDir (for now)
 sourceSets {
-	main {
-		groovy {
-			srcDir 'src/main/java'
-		}
-	}
+	main { groovy { srcDir 'src/main/java'	} }
+	test { groovy { srcDir 'src/test/java' } }
 }
-
