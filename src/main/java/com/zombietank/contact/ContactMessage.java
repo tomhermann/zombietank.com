@@ -16,7 +16,7 @@ import com.google.common.base.Objects;
 public class ContactMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Number id;
+	private long id;
 
 	@NotBlank(message = "Please provide your name.")
 	private String name;
@@ -32,11 +32,11 @@ public class ContactMessage implements Serializable {
 	@NotBlank(message = "Please provide a message.")
 	private String message;
 
-	public Number getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Number id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

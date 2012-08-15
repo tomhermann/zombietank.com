@@ -27,7 +27,7 @@ public class ContactMessageJdbcRepository implements ContactMessageRepository {
 	public void save(ContactMessage message) {
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(message);
 		Number newId = insertMessage.executeAndReturnKey(parameters);
-		message.setId(newId);
+		message.setId(newId.longValue());
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class ContactMessageJdbcRepository implements ContactMessageRepository {
 	}
 
 	@Override
-	public ContactMessage getMessage(Number id) {
+	public ContactMessage getMessage(long id) {
 		String sql = "select * from contact_messages where id = ?";
 		return jdbcTemplate.queryForObject(sql, rowMapper(), id);
 	}
