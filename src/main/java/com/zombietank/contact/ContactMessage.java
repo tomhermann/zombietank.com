@@ -10,10 +10,11 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.google.common.base.Objects;
+import com.zombietank.db.Persistable;
 
 @Entity
 @Table(name="contact_message")
-public class ContactMessage implements Serializable {
+public class ContactMessage implements Persistable, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private long id;
