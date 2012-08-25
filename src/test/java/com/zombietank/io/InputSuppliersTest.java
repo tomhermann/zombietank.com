@@ -1,12 +1,13 @@
 package com.zombietank.io;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.sameInstance;
+import static org.junit.Assert.assertThat;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -38,14 +39,14 @@ public class InputSuppliersTest {
 		
 		InputSupplier<InputStreamReader> supplier = InputSuppliers.newReaderSupplier(stringInputStream, Charsets.UTF_8);
 		
-		assertEquals(inputString, CharStreams.toString(supplier));
+		assertThat(CharStreams.toString(supplier), is(inputString));
 	}
 	
 	@Test
 	public void readerSupplierHasCorrectEncoding() throws Exception {
 		InputSupplier<InputStreamReader> supplier = InputSuppliers.newReaderSupplier(inputStream, Charsets.ISO_8859_1);
 		
-		assertTrue(Charsets.ISO_8859_1.aliases().contains(supplier.getInput().getEncoding()));
+		assertThat(Charsets.ISO_8859_1.aliases(), hasItem(supplier.getInput().getEncoding()));
 	}
 	
 	@Test(expected=NullPointerException.class)
