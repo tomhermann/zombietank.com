@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import com.google.common.base.Preconditions;
+
 @Repository
 public class ContactMessageJdbcRepository implements ContactMessageRepository {
 	private final JdbcTemplate jdbcTemplate;
@@ -32,6 +34,7 @@ public class ContactMessageJdbcRepository implements ContactMessageRepository {
 	
 	@Override
 	public void delete(ContactMessage message) {
+		Preconditions.checkNotNull(message);
 		deleteById(message.getId());
 	}
 
