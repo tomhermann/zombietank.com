@@ -1,6 +1,7 @@
 package com.zombietank.config.db;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
@@ -26,7 +27,7 @@ public class ScriptLoader {
 
 	public Script loadScript(String path) throws IOException {
 		MessageDigest messageDigest = md5Digest();
-		DigestInputStream inputStream = new DigestInputStream(resourceLoader.getResource(path).getInputStream(), messageDigest);
+		InputStream inputStream = new DigestInputStream(resourceLoader.getResource(path).getInputStream(), messageDigest);
 		String contents = CharStreams.toString(InputSuppliers.newReaderSupplier(inputStream, Charsets.UTF_8));
 		String checksum = new BigInteger(1, messageDigest.digest()).toString(16);
 		return new Script(path, contents, checksum);
