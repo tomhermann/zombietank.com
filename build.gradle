@@ -17,9 +17,13 @@ configurations {
 sourceCompatibility = 1.6
 targetCompatibility = sourceCompatibility
 
+
 dependencies {
    compile (
       'javax.inject:javax.inject:1',
+      'javax.validation:validation-api:1.0.0.GA',
+      'javax.servlet:jstl:1.2',
+      'javax.annotation:jsr250-api:1.0',
       "org.springframework:spring-webmvc:${springVersion}",
       "org.springframework:spring-jdbc:${springVersion}",
       "org.springframework:spring-aspects:${springVersion}",
@@ -31,12 +35,10 @@ dependencies {
       "org.slf4j:slf4j-api:${slf4jVersion}",
       "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
       "org.slf4j:slf4j-log4j12:${slf4jVersion}",
-      'javax.validation:validation-api:1.0.0.GA',
       'org.hibernate:hibernate-validator:4.2.0.Final',
       'org.codehaus.jackson:jackson-mapper-asl:1.9.4',
       'commons-fileupload:commons-fileupload:1.2.2',
       'com.zombietank:com.zombietank.email:1.0.3.RELEASE',
-      'javax.servlet:jstl:1.2',
       'com.google.guava:guava:12.0.1',
       'opensymphony:sitemesh:2.4.2'
    )
