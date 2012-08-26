@@ -1,6 +1,9 @@
 package com.zombietank.contact;
 
-import com.zombietank.db.CrudRepository;
+import java.util.List;
 
-public interface ContactMessageRepository extends CrudRepository<ContactMessage> {
+import org.springframework.data.repository.CrudRepository;
+
+public interface ContactMessageRepository extends CrudRepository<ContactMessage, Long> {
+	public List<ContactMessage> findAll();
 }

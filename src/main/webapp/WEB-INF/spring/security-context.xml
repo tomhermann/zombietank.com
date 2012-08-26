@@ -9,11 +9,7 @@
 		secured-annotations="enabled" jsr250-annotations="enabled" />
 
 	<http use-expressions="true" auto-config="true">
-		<form-login login-page="/login" 
-					login-processing-url="/login/authenticate"
-					authentication-failure-url="/login?error=true"
-					
-		 />
+		<form-login login-page="/login" login-processing-url="/login/authenticate" authentication-failure-url="/login?error=true" />
 		<logout logout-url="/logout" delete-cookies="JSESSIONID" />
 		<remember-me />
 		<intercept-url pattern="/contact-messages/**" access="hasRole('ROLE_SUPERVISOR')" />
@@ -23,7 +19,8 @@
 
 
 	<!-- Usernames/Passwords are rod/koala -->
-	<beans:bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 
 	<authentication-manager>
 		<authentication-provider>

@@ -5,9 +5,8 @@ apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 
 repositories {
-	maven {
-		url 'http://iheartsoftware.com/nexus/content/groups/public'
-	}
+	maven { url 'http://iheartsoftware.com/nexus/content/groups/public' }
+	maven { url 'http://source.mysema.com/maven2/releases' }
 }
 
 configurations {
@@ -26,11 +25,15 @@ dependencies {
       'javax.annotation:jsr250-api:1.0',
       "org.springframework:spring-webmvc:${springVersion}",
       "org.springframework:spring-jdbc:${springVersion}",
+      'org.springframework.data:spring-data-jpa:1.1.1.RELEASE',
+      "org.springframework:spring-orm:${springVersion}",
       "org.springframework:spring-aspects:${springVersion}",
       "org.springframework.security:spring-security-web:${springSecurityVersion}",
       "org.springframework.security:spring-security-taglibs:${springSecurityVersion}",
       "org.springframework.security:spring-security-config:${springSecurityVersion}",
-      'org.aspectj:aspectjrt:1.6.11',
+	  'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.0.Final',
+	  'com.mysema.querydsl:querydsl-jpa:2.6.0',
+	  'org.aspectj:aspectjweaver:1.6.12',
       'cglib:cglib:2.2.2',
       "org.slf4j:slf4j-api:${slf4jVersion}",
       "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
@@ -45,16 +48,17 @@ dependencies {
 
    providedCompile (
       'javax.servlet:servlet-api:2.5',
-      'javax.servlet.jsp:jsp-api:2.1',
-      'javax.persistence:persistence-api:1.0'
+      'javax.servlet.jsp:jsp-api:2.1'
    )
 
    runtime (
-      'com.h2database:h2:1.3.158',
+      'org.hsqldb:hsqldb:2.2.8',
+	  'org.hibernate:hibernate-entitymanager:4.1.4.Final',
       'log4j:log4j:1.2.16'
    )
 
    testCompile (
+	  "org.springframework:spring-test:${springVersion}",
       'junit:junit:4.10',
       'org.hamcrest:hamcrest-all:1.1',
       'org.mockito:mockito-all:1.9.5-rc1'

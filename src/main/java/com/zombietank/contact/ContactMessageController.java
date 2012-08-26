@@ -24,12 +24,12 @@ public class ContactMessageController {
 	@RequestMapping("all")
 	@ResponseBody
 	public Collection<ContactMessage> showAllMessages() {
-		return messageRepository.getAll();
+		return messageRepository.findAll();
 	}
 
 	@RequestMapping("message/{id}")
 	@ResponseBody
 	public ContactMessage showMessage(@PathVariable long id) {
-		return messageRepository.get(id);
+		return messageRepository.findOne(id);
 	}
 }

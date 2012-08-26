@@ -1,6 +1,6 @@
 package com.zombietank.blog;
 
-import com.zombietank.db.CrudRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface BlogRepository extends CrudRepository<Blog> {
+public interface BlogRepository extends CrudRepository<Blog, Long> {
 }
