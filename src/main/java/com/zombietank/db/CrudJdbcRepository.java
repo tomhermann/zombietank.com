@@ -16,16 +16,17 @@ public abstract class CrudJdbcRepository<T extends Persistable> implements CrudR
 	private final JdbcTemplate jdbcTemplate;
 	private final String tableName;
 	private final BeanPropertyRowMapper<T> rowMapper;
+	private final SimpleJdbcInsert insert;
 
 	public CrudJdbcRepository(Class<T> clazz, DataSource dataSource, String tableName) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		this.tableName = tableName;
 		this.rowMapper = BeanPropertyRowMapper.newInstance(clazz);
+		this.insert = new SimpleJdbcInsert(jdbcTemplate).withTableName(tableName).usingGeneratedKeyColumns(getIdFieldName());
 	}
 	
 	@Override
 	public void save(T persistable) {
-		SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName(tableName).usingGeneratedKeyColumns(getIdFieldName());
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(persistable);
 		Number newId = insert.executeAndReturnKey(parameters);
 		persistable.setId(newId.longValue());
