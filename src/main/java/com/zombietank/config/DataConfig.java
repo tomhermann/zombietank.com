@@ -42,24 +42,6 @@ public class DataConfig {
 	}
 	
 	@Bean
-	public AbstractEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		factory.setDataSource(dataSource);
-		factory.setJpaVendorAdapter(jpaVendorAdapter());
-		factory.setPackagesToScan("com.zombietank");
-		factory.setPersistenceUnitName("spring-jpa");
-		return factory;
-	}
-	
-	private JpaVendorAdapter jpaVendorAdapter() {
-		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-		adapter.setShowSql(true);
-		adapter.setGenerateDdl(true);
-		adapter.setDatabase(Database.HSQL);
-		return adapter;
-	}
-
-	@Bean
 	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager(entityManagerFactory);
 	}
@@ -70,13 +52,30 @@ public class DataConfig {
 		public DataSource dataSource() {
 			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
 		}
+		
+		@Bean
+		public AbstractEntityManagerFactoryBean entityManagerFactory() {
+			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+			factory.setDataSource(dataSource());
+			factory.setJpaVendorAdapter(jpaVendorAdapter());
+			factory.setPackagesToScan("com.zombietank");
+			factory.setPersistenceUnitName("spring-jpa");
+			return factory;
+		}
+		
+		private JpaVendorAdapter jpaVendorAdapter() {
+			HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+			adapter.setShowSql(true);
+			adapter.setGenerateDdl(true);
+			adapter.setDatabase(Database.HSQL);
+			return adapter;
+		}
 	}
 
 	@Prod @Configuration
 	static class Production {
 		@Inject
 		private Environment environment;
-		
 		
 		@Bean(destroyMethod = "dispose")
 		public DataSource dataSource() throws NamingException {
