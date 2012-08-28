@@ -3,6 +3,9 @@ package com.zombietank.contact;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -15,8 +18,9 @@ import com.google.common.base.Objects;
 @Table(name="contact_message")
 public class ContactMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	@NotBlank(message = "Please provide your name.")
 	private String name;
@@ -32,11 +36,11 @@ public class ContactMessage implements Serializable {
 	@NotBlank(message = "Please provide a message.")
 	private String message;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

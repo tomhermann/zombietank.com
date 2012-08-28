@@ -1,29 +1,30 @@
 package com.zombietank.config;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.naming.NamingException;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.dao.support.PersistenceExceptionTranslator;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.jndi.JndiAccessor;
+import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
+import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zombietank.config.annotation.Dev;
 import com.zombietank.config.annotation.Prod;
-import com.zombietank.config.db.DatabaseBootstrap;
-import com.zombietank.config.db.ScriptHistory;
-import com.zombietank.config.db.ScriptRunner;
-import com.zombietank.config.db.Scripts;
 
 @Configuration
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
@@ -31,37 +32,43 @@ public class DataConfig {
 
 	@Inject
 	private DataSource dataSource;
-
-	/**
-	 * Allows repositories to access RDBMS data using the JDBC API.
-	 */
+	
+	@Inject
+	private EntityManagerFactory entityManagerFactory;
+	
 	@Bean
-	public JdbcTemplate jdbcTemplate() {
-		return new JdbcTemplate(dataSource);
+	public PersistenceExceptionTranslator exceptionTranslator() {
+		return new HibernateExceptionTranslator();
 	}
-
-	/**
-	 * Allows transactions to be managed against the RDBMS using the JDBC API.
-	 */
+	
 	@Bean
 	public PlatformTransactionManager transactionManager() {
-		return new DataSourceTransactionManager(dataSource);
+		return new JpaTransactionManager(entityManagerFactory);
 	}
 
 	@Dev @Configuration
 	static class Development {
-		@Inject
-		private JdbcTemplate jdbcTemplate;
-		
-		@Bean
-		public DatabaseBootstrap databaseBootstrap() throws IOException {
-			Scripts scripts = new Scripts().addSystemScript("sql/scriptHistory.sql").addSystemScript("sql/schema.sql").addScript("sql/data.sql");
-			return new DatabaseBootstrap(scripts, new ScriptRunner(new ScriptHistory(dataSource()), jdbcTemplate));
-		}
-		
 		@Bean(destroyMethod = "shutdown")
 		public DataSource dataSource() {
-			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
+			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
+		}
+		
+		@Bean
+		public AbstractEntityManagerFactoryBean entityManagerFactory() {
+			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+			factory.setDataSource(dataSource());
+			factory.setJpaVendorAdapter(jpaVendorAdapter());
+			factory.setPackagesToScan("com.zombietank");
+			factory.setPersistenceUnitName("spring-jpa");
+			return factory;
+		}
+		
+		private JpaVendorAdapter jpaVendorAdapter() {
+			HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+			adapter.setShowSql(true);
+			adapter.setGenerateDdl(true);
+			adapter.setDatabase(Database.HSQL);
+			return adapter;
 		}
 	}
 
@@ -69,7 +76,6 @@ public class DataConfig {
 	static class Production {
 		@Inject
 		private Environment environment;
-		
 		
 		@Bean(destroyMethod = "dispose")
 		public DataSource dataSource() throws NamingException {

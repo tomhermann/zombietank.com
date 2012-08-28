@@ -1,11 +1,9 @@
 package com.zombietank.contact;
 
-import java.util.Collection;
+import java.util.List;
 
-public interface ContactMessageRepository {
-	void save(ContactMessage message);
-	void delete(ContactMessage message);
-	void deleteById(Number id);
-	ContactMessage getMessage(long id);
-	Collection<ContactMessage> getAllMessages();
+import org.springframework.data.repository.CrudRepository;
+
+public interface ContactMessageRepository extends CrudRepository<ContactMessage, Long> {
+	public List<ContactMessage> findAll();
 }
