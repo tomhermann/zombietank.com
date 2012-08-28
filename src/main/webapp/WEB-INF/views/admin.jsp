@@ -1,1 +1,0 @@
-<h1>Super secret Admin page</h1>
