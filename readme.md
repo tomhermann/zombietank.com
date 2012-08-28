@@ -1,7 +1,8 @@
-Spring MVC 3.1.1 based web example
+Spring MVC 3.1.2 based web example
 ==================================
 * Spring 3 Profile Support (@Dev, @Prod)
-* Spring Security - with custom login form
+* Spring Security
+* Hibernate + JPA + spring-data jpa
 * Spring based email support
 * Sitemesh2
 * slf4j + log4j based logging
