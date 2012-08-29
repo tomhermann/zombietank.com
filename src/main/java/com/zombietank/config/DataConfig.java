@@ -45,30 +45,30 @@ public class DataConfig {
 	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager(entityManagerFactory);
 	}
+	
+	@Bean
+	public AbstractEntityManagerFactoryBean entityManagerFactory() {
+		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+		factory.setDataSource(dataSource);
+		factory.setJpaVendorAdapter(jpaVendorAdapter());
+		factory.setPackagesToScan("com.zombietank");
+		factory.setPersistenceUnitName("spring-jpa");
+		return factory;
+	}
+	
+	private JpaVendorAdapter jpaVendorAdapter() {
+		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+		adapter.setShowSql(true);
+		adapter.setGenerateDdl(true);
+		adapter.setDatabase(Database.HSQL);
+		return adapter;
+	}
 
 	@Dev @Configuration
 	static class Development {
 		@Bean(destroyMethod = "shutdown")
 		public DataSource dataSource() {
 			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
-		}
-		
-		@Bean
-		public AbstractEntityManagerFactoryBean entityManagerFactory() {
-			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-			factory.setDataSource(dataSource());
-			factory.setJpaVendorAdapter(jpaVendorAdapter());
-			factory.setPackagesToScan("com.zombietank");
-			factory.setPersistenceUnitName("spring-jpa");
-			return factory;
-		}
-		
-		private JpaVendorAdapter jpaVendorAdapter() {
-			HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-			adapter.setShowSql(true);
-			adapter.setGenerateDdl(true);
-			adapter.setDatabase(Database.HSQL);
-			return adapter;
 		}
 	}
 
