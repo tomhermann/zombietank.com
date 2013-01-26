@@ -16,13 +16,6 @@
 		<param-value>com.zombietank.config</param-value>
 	</context-param>
 
-	<!-- Specifies the default mode of this application, to be activated if 
-		no other profile (or mode) is specified -->
-	<context-param>
-		<param-name>spring.profiles.default</param-name>
-		<param-value>dev</param-value>
-	</context-param>
-
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

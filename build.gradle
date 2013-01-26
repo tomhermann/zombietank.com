@@ -5,8 +5,9 @@ apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 
 repositories {
-	maven { url 'http://iheartsoftware.com/nexus/content/groups/public' }
+	mavenCentral()
 	maven { url 'http://source.mysema.com/maven2/releases' }
+	maven { url 'http://teleal.org/m2' }
 }
 
 configurations {
@@ -15,7 +16,6 @@ configurations {
 
 sourceCompatibility = 1.6
 targetCompatibility = sourceCompatibility
-
 
 dependencies {
    compile (
@@ -33,16 +33,16 @@ dependencies {
       "org.springframework.security:spring-security-config:${springSecurityVersion}",
       'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.0.Final',
       'com.mysema.querydsl:querydsl-jpa:2.6.0',
-      'org.aspectj:aspectjweaver:1.6.12',
-      'cglib:cglib:2.2.2',
+      'org.aspectj:aspectjweaver:1.7.1',
       "org.slf4j:slf4j-api:${slf4jVersion}",
       "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
       "org.slf4j:slf4j-log4j12:${slf4jVersion}",
       'org.hibernate:hibernate-validator:4.2.0.Final',
       'org.codehaus.jackson:jackson-mapper-asl:1.9.4',
       'commons-fileupload:commons-fileupload:1.2.2',
-      'com.zombietank:com.zombietank.email:1.0.3.RELEASE',
-      'com.google.guava:guava:12.0.1',
+      'com.google.guava:guava:13.0.1',
+	  'javax.jmdns:jmdns:3.4.1',
+      'org.teleal.cling:cling-core:1.0.5',
       'opensymphony:sitemesh:2.4.2'
    )
 
