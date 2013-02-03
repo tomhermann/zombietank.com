@@ -14,10 +14,14 @@
 	<logger name="com.zombietank">
 		<level value="debug" />
 	</logger>
+	
+	<logger name="org.springframework">
+		<level value="info" />
+	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 </log4j:configuration>
