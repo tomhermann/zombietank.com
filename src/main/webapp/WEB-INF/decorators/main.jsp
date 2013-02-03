@@ -40,7 +40,7 @@
 				<a class="brand" href="<c:url value="/" />">zombietank</a>
 				<ul class="nav">
 					<li><a href="<c:url value="/" />">Home</a></li>
-					<li><a href="<c:url value="/contact" />">Contact</a></li>
+					<li><a href="<c:url value="/upnp" />">UPnP</a></li>
 					<sec:authorize ifAnyGranted="ROLE_SUPERVISOR">
 						<li><a href="<c:url value="/configure-me" />">Admin</a></li>
 					</sec:authorize>

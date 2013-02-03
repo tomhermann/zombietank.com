@@ -15,6 +15,11 @@ public class UpnpController {
 	@Inject
 	private UpnpManager upnpService;
 
+	@RequestMapping("")
+	public String index() {
+		return "upnp/browser";
+	}
+	
 	@RequestMapping("search/all")
 	@ResponseBody
 	public String start() {

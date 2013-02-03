@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.teleal.cling.UpnpService;
+import org.teleal.cling.UpnpServiceImpl;
 import org.teleal.cling.model.message.header.STAllHeader;
 import org.teleal.cling.model.meta.DeviceIdentity;
 
@@ -36,5 +37,12 @@ public class UpnpManager {
 	
 	public Collection<DeviceIdentity> getDiscoveredDevices() {
 		return listener.getDevices();
+	}
+	
+	public static void main(String[] args) {
+		UpnpServiceImpl upnpService2 = new UpnpServiceImpl();
+		
+		UpnpManager upnpManager = new UpnpManager(upnpService2);
+		upnpManager.searchAll();
 	}
 }
