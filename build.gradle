@@ -32,9 +32,9 @@ dependencies {
       "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
       "org.slf4j:slf4j-log4j12:${slf4jVersion}",
       'org.hibernate:hibernate-validator:4.2.0.Final',
-      'org.codehaus.jackson:jackson-mapper-asl:1.9.4',
+      'org.codehaus.jackson:jackson-mapper-asl:1.9.12',
       'commons-fileupload:commons-fileupload:1.2.2',
-      'com.google.guava:guava:12.0.1',
+      'com.google.guava:guava:14.0.1',
       'opensymphony:sitemesh:2.4.2'
    )
 

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
+	
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
@@ -23,9 +24,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("home");
-		registry.addViewController("/login").setViewName("login");
-		registry.addViewController("/logged-out").setViewName("logged-out");
-		registry.addViewController("/timeout").setViewName("timeout");
 		registry.addViewController("/error").setViewName("error");
 	}
 
