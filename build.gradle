@@ -5,7 +5,7 @@ apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 
 repositories {
-	maven { url 'http://iheartsoftware.com/nexus/content/groups/public' }
+	mavenCentral();
 	maven { url 'http://source.mysema.com/maven2/releases' }
 }
 
@@ -25,14 +25,7 @@ dependencies {
       'javax.annotation:jsr250-api:1.0',
       "org.springframework:spring-webmvc:${springVersion}",
       "org.springframework:spring-jdbc:${springVersion}",
-      'org.springframework.data:spring-data-jpa:1.1.1.RELEASE',
-      "org.springframework:spring-orm:${springVersion}",
       "org.springframework:spring-aspects:${springVersion}",
-      "org.springframework.security:spring-security-web:${springSecurityVersion}",
-      "org.springframework.security:spring-security-taglibs:${springSecurityVersion}",
-      "org.springframework.security:spring-security-config:${springSecurityVersion}",
-      'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.0.Final',
-      'com.mysema.querydsl:querydsl-jpa:2.6.0',
       'org.aspectj:aspectjweaver:1.6.12',
       'cglib:cglib:2.2.2',
       "org.slf4j:slf4j-api:${slf4jVersion}",
@@ -41,7 +34,6 @@ dependencies {
       'org.hibernate:hibernate-validator:4.2.0.Final',
       'org.codehaus.jackson:jackson-mapper-asl:1.9.4',
       'commons-fileupload:commons-fileupload:1.2.2',
-      'com.zombietank:com.zombietank.email:1.0.3.RELEASE',
       'com.google.guava:guava:12.0.1',
       'opensymphony:sitemesh:2.4.2'
    )
@@ -52,8 +44,6 @@ dependencies {
    )
 
    runtime (
-      'org.hsqldb:hsqldb:2.2.8',
-      'org.hibernate:hibernate-entitymanager:4.1.6.Final',
       'log4j:log4j:1.2.16'
    )
 

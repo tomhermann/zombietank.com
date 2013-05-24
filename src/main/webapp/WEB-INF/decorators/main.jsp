@@ -1,7 +1,7 @@
 <%@ page import="java.util.Calendar" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,21 +40,7 @@
 				<a class="brand" href="<c:url value="/" />">zombietank</a>
 				<ul class="nav">
 					<li><a href="<c:url value="/" />">Home</a></li>
-					<li><a href="<c:url value="/contact" />">Contact</a></li>
-					<sec:authorize ifAnyGranted="ROLE_SUPERVISOR">
-						<li><a href="<c:url value="/configure-me" />">Admin</a></li>
-					</sec:authorize>
 				</ul>
-				<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
-	                <ul class="nav secondary-nav">
-						<li><a href="<c:url value="/login" />">Login</a></li>
-					</ul>
-		        </sec:authorize>
-		        <sec:authorize ifNotGranted="ROLE_ANONYMOUS">
-	                <ul class="nav secondary-nav">
-						<li><a href="<c:url value="/logout" />">Logout</a></li>
-					</ul>
-		        </sec:authorize>
 			</div>
 		</div>
 	</div>

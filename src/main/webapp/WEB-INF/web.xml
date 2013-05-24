@@ -16,38 +16,9 @@
 		<param-value>com.zombietank.config</param-value>
 	</context-param>
 
-	<!-- Specifies the default mode of this application, to be activated if 
-		no other profile (or mode) is specified -->
-	<context-param>
-		<param-name>spring.profiles.default</param-name>
-		<param-value>dev</param-value>
-	</context-param>
-
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<!-- Spring Security -->
-	<context-param>
-		<param-name>webAppRootKey</param-name>
-		<param-value>zombietank.com</param-value>
-	</context-param>
-
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<!-- Publishes events for session creation and destruction through the application 
-		 context. Optional unless concurrent session control is being used. -->
-	<listener>
-		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
 	</listener>
 
 	<!-- Sitemesh -->
